@@ -7,6 +7,8 @@
  ********************************************************************************/
 import com.trolltech.qt.core.*;
 import com.trolltech.qt.gui.*;
+import com.trolltech.qt.gui.QPalette.ColorGroup;
+import com.trolltech.qt.gui.QPalette.ColorRole;
 
 public class Ui_Form implements com.trolltech.qt.QUiForm<QWidget>
 {
@@ -17,12 +19,26 @@ public class Ui_Form implements com.trolltech.qt.QUiForm<QWidget>
 
     public void setupUi(QWidget Form)
     {
-        Form.setObjectName("Form");
+    	QPalette paliteLcd = new QPalette();
+		QPalette paliteForm = new QPalette();
+		
+		paliteLcd.setColor(ColorGroup.All, ColorRole.WindowText, QColor.red);
+		paliteLcd.setColor(ColorGroup.All, ColorRole.Light, QColor.black);
+		paliteLcd.setColor(ColorGroup.All, ColorRole.Dark, QColor.black);
+		paliteForm.setColor(ColorGroup.All, ColorRole.Window, QColor.black);
+		
+		Form.setObjectName("Form");
         Form.resize(new QSize(520, 300).expandedTo(Form.minimumSizeHint()));
+        Form.setPalette(paliteForm);
+        
         verticalLayout = new QVBoxLayout(Form);
         verticalLayout.setObjectName("verticalLayout");
+        
         lcdNumber = new QLCDNumber(Form);
         lcdNumber.setObjectName("lcdNumber");
+        lcdNumber.setNumDigits(5);
+		lcdNumber.setLineWidth(0);
+		lcdNumber.setPalette(paliteLcd);
 
         verticalLayout.addWidget(lcdNumber);
 
