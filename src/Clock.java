@@ -71,9 +71,7 @@ public class Clock extends QWidget {
 	}
 	
 	public void anim(int time) {
-		byte nam[] = {'g','e','o','m','e','t','r','y'};
-		QByteArray qnam = new QByteArray(nam);
-		QPropertyAnimation an = new QPropertyAnimation(ui.lcdNumber, qnam);
+		QPropertyAnimation an = new QPropertyAnimation(ui.lcdNumber, new QByteArray("geometry"));
 		QEasingCurve easing = new QEasingCurve();
 		easing.setType(QEasingCurve.Type.Linear);
 		QRect rectStart = new QRect(this.width() /2 , this.height() / 2, 0, 0);
